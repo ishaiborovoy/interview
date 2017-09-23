@@ -1,0 +1,5 @@
+---
+applications:
+ - name: YellowPages
+   random-route: true
+   memory: 2048M

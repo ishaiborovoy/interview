@@ -1,0 +1,29 @@
+{
+  "name": "yellow-pages-app",
+  "main": "server.js",
+  "description": "Yellow Pages",
+  "version": "0.1.1",
+  "private": false,
+  "engines": {
+    "node": "6.*"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IBM-Bluemix/get-started-node"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.x",
+    "cfenv": "^1.0.x",
+    "dotenv": "^4.0.0",
+    "express": "^4.15.x",
+    "json-hash": "^1.2.0",
+    "node-cache": "^4.1.1",
+    "request": "^2.82.0",
+    "request-promise": "^4.2.1"
+  },
+  "author": "Ishai Borovoy",
+  "license": "Apache-2.0"
+}

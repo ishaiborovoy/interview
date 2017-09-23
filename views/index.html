@@ -1,0 +1,85 @@
+<html>
+
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+  <script src="app.js" type="text/javascript"></script>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+  <link href='styles.css' rel='stylesheet' type='text/css'>
+  <style>
+    .search {
+      margin: 0 auto;
+      width: 800px;
+    }
+
+    .user-avatar {
+      float: left;
+      margin-right: 12px;
+      width: 40px;
+      border-radius: 40px;
+    }
+
+    .results {
+      margin-top: 40px;
+    }
+  </style>
+  <title>Eksercise</title>
+</head>
+
+<body>
+  <div ng-app="yellowPagesApp" class="search">
+    <div ng-controller="searchController">
+      
+      <!-- Search input -->
+      <div class="cui__input giant">
+        <label class="cui__input__label" ng>
+            {{searchLabel}}
+        </label>
+        <form ng-submit="searchYP(1)" />
+        <input class="cui__input__input" ng-model="searchQuery" ng-keypress="searchLabel=''" />
+        </form>
+      </div>
+
+      <!-- Status -->
+      <p class="cui__selector--direct__description">
+        {{statusText}}
+        <br/>
+      </p>
+
+      <!-- Page navigations -->
+      <span class="results" ng-if="!fetchingResults">
+        <a href="javascript:void(0)" class="cui__selector--direct__description" ng-if="page > 1" ng-click="searchYP(page-1)">
+         << Previous page
+        </a>
+        <span ng-if="page > 1 || results.length >= 25" class="cui__selector--direct__description">&nbsp&nbsp{{page}}&nbsp&nbsp</span>
+        <a href="javascript:void(0)" class="cui__selector--direct__description" ng-if="results.length >= 25" ng-click="searchYP(page+1)">
+          Next page >>
+        </a>
+      </span>
+
+      <!-- Results -->
+      <div class="results" ng-if="results.length > 0">
+        <div class="cui__selector--direct title">
+
+          <h2 class="cui__selector--direct__title">
+            Search results
+          </h2>
+          <div ng-repeat="person in results track by person.id">
+
+            <div class="cui__selector--direct__item">
+              <img class="user-avatar" src="{{person.picture}}" />
+
+              <div class="cui__selector--direct__label">
+                {{person.name}} ({{calcAge(person.birthday)}}), {{person.phone}}
+              </div>
+              <p class="cui__selector--direct__description">
+                {{person.address.street}}, {{person.address.city}}, {{person.address.country}}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
